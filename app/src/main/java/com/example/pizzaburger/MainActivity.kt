@@ -5,16 +5,18 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.pizzaburger.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private var _bindig: ActivityMainBinding? = null
+    private val binding
+        get() = _bindig
+            ?: throw IllegalStateException("Binding for ActivityMainBinding must not be null")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        _bindig = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
     }
 }
