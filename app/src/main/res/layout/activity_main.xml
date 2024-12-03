@@ -2,18 +2,43 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/cl_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_main_layout"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="@dimen/half_main_indentation_favorites_category_buttons">
+
+        <android.widget.Button
+            android:id="@+id/button_category"
+            android:text="@string/button_category_name"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:backgroundTint="@color/background_category_button"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/main_indentation_favorites_category_buttons"
+            style="@style/StyleNavButton" />
+
+        <android.widget.Button
+            android:id="@+id/button_favourites"
+            android:text="@string/button_favourites_name"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/main_category_favorites_margin_start"
+            android:layout_marginEnd="@dimen/main_indentation_favorites_category_buttons"
+            android:layout_weight="1"
+            android:backgroundTint="@color/background_favourites_button"
+            android:drawableEnd="@drawable/ic_heart_empty"
+            style="@style/StyleNavButton"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
