@@ -2,16 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/cl_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@color/background_main_layout"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,26 +21,21 @@
             android:text="@string/button_category_name"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:backgroundTint="@color/BackgroundCategoryButton"
-            android:background="@drawable/shape_button_footer"
+            android:backgroundTint="@color/background_category_button"
             android:layout_weight="1"
             android:layout_marginStart="@dimen/main_indentation_favorites_category_buttons"
-            style="@style/StyleNavButton"
-            app:layout_constraintStart_toStartOf="parent" />
+            style="@style/StyleNavButton" />
 
         <android.widget.Button
             android:id="@+id/button_favourites"
             android:text="@string/button_favourites_name"
             android:layout_height="wrap_content"
             android:layout_width="0dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="@dimen/main_category_favorites_margin_start"
             android:layout_marginEnd="@dimen/main_indentation_favorites_category_buttons"
             android:layout_weight="1"
-            android:background="@drawable/shape_button_footer"
-            android:backgroundTint="@color/BackgroundFavouritesButton"
+            android:backgroundTint="@color/background_favourites_button"
             android:drawableEnd="@drawable/ic_heart_empty"
-            android:paddingVertical="@dimen/half_main_indentation_favorites_category_buttons"
-            android:paddingHorizontal="@dimen/main_indentation_favorites_category_buttons"
             style="@style/StyleNavButton"
             app:layout_constraintEnd_toEndOf="parent" />
 

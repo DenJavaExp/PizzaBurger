@@ -9,14 +9,14 @@ import com.example.pizzaburger.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private var _bindig: ActivityMainBinding? = null
+    private var _binding: ActivityMainBinding? = null
     private val binding
-        get() = _bindig
+        get() = _binding
             ?: throw IllegalStateException("Binding for ActivityMainBinding must not be null")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _bindig = ActivityMainBinding.inflate(layoutInflater)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
     }
 }
