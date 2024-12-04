@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="StyleNavButton" parent="Widget.Material3.Button">
+        <dimen name="android:background">@drawable/shape_button_footer</dimen>
+        <dimen name="android:textColor">@color/white</dimen>
+        <dimen name="android:fontFamily">@font/montserrat_alternates_semi_bold</dimen>
+        <dimen name="android:textSize">14sp</dimen>
+        <dimen name="android:textAllCaps">true</dimen>
+    </style>
+</resources>
