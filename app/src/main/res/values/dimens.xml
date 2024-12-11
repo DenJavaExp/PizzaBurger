@@ -3,4 +3,5 @@
     <dimen name="main_category_favorites_margin_start">4dp</dimen>
     <dimen name="half_main_indentation_favorites_category_buttons">8dp</dimen>
     <dimen name="main_indentation_favorites_category_buttons">16dp</dimen>
+    <dimen name="text_size_footer_button">14sp</dimen>
 </resources>
