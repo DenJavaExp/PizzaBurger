@@ -2,5 +2,4 @@
     <string name="app_name">Pizza Burger</string>
     <string name="button_favourites_name">Избранное</string>
     <string name="button_category_name">Категории</string>
-    <string name="fragment_categories_list">FragmentCategoriesList</string>
 </resources>
