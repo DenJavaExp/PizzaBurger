@@ -6,4 +6,12 @@
         <item name="android:fontFamily">@font/montserrat_alternates_semi_bold</item>
         <item name="android:textAllCaps">true</item>
     </style>
+
+    <style name="StyleTvHeader" parent="TextAppearance.AppCompat">
+        <item name="android:background">@drawable/shape_tv_header</item>
+        <item name="android:textColor">@color/color_tv_header</item>
+        <item name="android:fontFamily">@font/montserrat_alternates_semi_bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
 </resources>

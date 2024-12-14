@@ -30,7 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.buttonFavourites.setOnClickListener {
             supportFragmentManager.commit {
+                setReorderingAllowed(true)
                 replace<FavoritesFragment>(R.id.mainContainer)
+                addToBackStack(null)
             }
         }
 
