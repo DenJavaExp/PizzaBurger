@@ -6,4 +6,5 @@
     <color name="background_favourites_button">#E13E3E</color>
     <color name="background_main_layout">#F5F5F5</color>
     <color name="colorPrimary">#F4FAFF</color>
+    <color name="color_tv_header">#5F3678</color>
 </resources>
