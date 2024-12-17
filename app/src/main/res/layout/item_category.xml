@@ -6,20 +6,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
+        app:cardCornerRadius="@dimen/half_main_indentation_favorites_category_buttons"
+        android:layout_marginBottom="@dimen/main_indentation_favorites_category_buttons"
+        android:layout_marginHorizontal="@dimen/main_indentation_favorites_category_buttons"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        android:background="?attr/selectableItemBackground">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="?attr/selectableItemBackground">
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="6"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2"
+                android:layout_marginHorizontal="@dimen/main_indentation_favorites_category_buttons"
+                android:layout_marginVertical="@dimen/main_indentation_favorites_category_buttons">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
