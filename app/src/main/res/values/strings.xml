@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="category_logo">Category logo</string>
+    <string name="item_burger">Бургеры</string>
+    <string name="item_description">Рецепты всех популярных видов бургеров</string>
+</resources>

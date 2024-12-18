@@ -1,3 +1,5 @@
+import models.Category
+
 object STUB {
 
     private val categories = listOf(
