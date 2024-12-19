@@ -5,6 +5,8 @@
     <dimen name="padding_tv_category">10dp</dimen>
     <dimen name="main_indentation_favorites_category_buttons">16dp</dimen>
     <dimen name="text_size_footer_button">14sp</dimen>
+    <dimen name="text_size_tv_item_footer">12sp</dimen>
     <dimen name="text_size_tv_category_header">20sp</dimen>
     <dimen name="margin_top_tv_category">164dp</dimen>
+    <dimen name="iv_category_height">130dp</dimen>
 </resources>
