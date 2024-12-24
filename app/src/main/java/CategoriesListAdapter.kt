@@ -2,19 +2,33 @@ import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pizzaburger.R
 import com.example.pizzaburger.databinding.ItemCategoryBinding
 import models.Category
 
 class CategoriesListAdapter(private val dataSet: List<Category>) :
     RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 
+    private var itemClickListener: OnItemClickListener? = null
+
+    interface OnItemClickListener {
+        fun onItemClick(category: Category)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        itemClickListener = listener
+    }
+
     class ViewHolder(binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
         val imageView: ImageView = binding.imageCategory
         val titleTextView: TextView = binding.tvTitle
         val descriptionTextView: TextView = binding.description
+        val cardView: CardView = binding.cardView
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -39,8 +53,15 @@ class CategoriesListAdapter(private val dataSet: List<Category>) :
             null
         }
         viewHolder.imageView.setImageDrawable(drawable)
-        viewHolder.imageView.contentDescription = "Изображкение категории: ${category.title}"
+        viewHolder.imageView.contentDescription = viewHolder.imageView.context.getString(
+            R.string.image_content_description, category.title
+        )
+
+        viewHolder.cardView.setOnClickListener {
+            itemClickListener?.onItemClick(category)
+        }
     }
 
     override fun getItemCount() = dataSet.size
+
 }
