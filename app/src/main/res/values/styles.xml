@@ -14,4 +14,9 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="RecipesListFragment" parent="TextAppearance.AppCompat">
+        <item name="backgroundColor">@color/background_main_layout</item>
+        <item name="android:textColor">@color/color_tv_header</item>
+    </style>
+
 </resources>

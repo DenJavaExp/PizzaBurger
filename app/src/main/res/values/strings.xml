@@ -3,4 +3,5 @@
     <string name="category_logo">Category logo</string>
     <string name="item_burger">Бургеры</string>
     <string name="item_description">Рецепты всех популярных видов бургеров</string>
+    <string name="image_content_description">Изображение категории: %s</string>
 </resources>
