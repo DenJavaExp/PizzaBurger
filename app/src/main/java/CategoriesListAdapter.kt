@@ -14,10 +14,11 @@ import models.Category
 class CategoriesListAdapter(private val dataSet: List<Category>) :
     RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 
+    private var onCategoryClickListener: OnItemClickListener? = null
     private var itemClickListener: OnItemClickListener? = null
 
     interface OnItemClickListener {
-        fun onItemClick(category: Category)
+        fun onItemClick(categoryId: Int)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -58,7 +59,7 @@ class CategoriesListAdapter(private val dataSet: List<Category>) :
         )
 
         viewHolder.cardView.setOnClickListener {
-            itemClickListener?.onItemClick(category)
+            itemClickListener?.onItemClick(category.id)
         }
     }
 

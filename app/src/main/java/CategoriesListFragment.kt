@@ -7,7 +7,6 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.pizzaburger.R
 import com.example.pizzaburger.databinding.FragmentCategoriesListBinding
-import models.Category
 
 
 class CategoriesListFragment : Fragment() {
@@ -20,7 +19,7 @@ class CategoriesListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentCategoriesListBinding.inflate(inflater, container, false)
         return binding.root
@@ -41,19 +40,48 @@ class CategoriesListFragment : Fragment() {
         binding.rvCategories.adapter = categoryAdapter
 
         categoryAdapter.setOnItemClickListener(object : CategoriesListAdapter.OnItemClickListener {
-            override fun onItemClick(category: Category) {
+            override fun onItemClick(categoryId: Int) {
 
-                openRecipesByCategoryId()
+                openRecipesByCategoryId(categoryId)
 
             }
         })
     }
 
-    private fun openRecipesByCategoryId() {
+
+
+    private fun openRecipesByCategoryId(categoryId: Int) {
+        val category = STUB.getCategories().find { it.id == categoryId }
+        val categoryName = category?.title
+        val categoryUrl = category?.imageUrl
         requireActivity().supportFragmentManager.commit {
             setReorderingAllowed(true)
             addToBackStack(null)
             replace<RecipesListFragment>(R.id.mainContainer)
+
+
+            val bundle = Bundle().apply {
+                putInt("ARG_CATEGORY_ID", categoryId)
+                putString("ARG_CATEGORY_NAME", categoryName)
+                putString("ARG_CATEGORY_IMAGE_URL", categoryUrl)
+            }
+
+            replaceFragment(RecipesListFragment(), bundle)
         }
+    }
+
+    private fun replaceFragment(fragment: RecipesListFragment, args: Bundle) {
+        fragment.arguments = args
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.mainContainer, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+    companion object{
+        const val ARG_CATEGORY_ID = "arg_category_id"
+        const val ARG_CATEGORY_NAME = "arg_category_name"
+        const val ARG_CATEGORY_URI = "arg_category_uri"
+
     }
 }
