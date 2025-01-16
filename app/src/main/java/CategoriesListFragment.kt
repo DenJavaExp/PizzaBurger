@@ -1,7 +1,9 @@
 import android.os.Bundle
+import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -49,7 +51,6 @@ class CategoriesListFragment : Fragment() {
     }
 
 
-
     private fun openRecipesByCategoryId(categoryId: Int) {
         val category = STUB.getCategories().find { it.id == categoryId }
         val categoryName = category?.title
@@ -60,28 +61,31 @@ class CategoriesListFragment : Fragment() {
             replace<RecipesListFragment>(R.id.mainContainer)
 
 
-            val bundle = Bundle().apply {
-                putInt("ARG_CATEGORY_ID", categoryId)
-                putString("ARG_CATEGORY_NAME", categoryName)
-                putString("ARG_CATEGORY_IMAGE_URL", categoryUrl)
-            }
+            val bundle = bundleOf(
+                "ARG_CATEGORY_ID" to categoryId,
+                "ARG_CATEGORY_NAME" to categoryName,
+                "ARG_CATEGORY_IMAGE_URL" to categoryUrl
+            )
 
             replaceFragment(RecipesListFragment(), bundle)
         }
     }
 
-    private fun replaceFragment(fragment: RecipesListFragment, args: Bundle) {
-        fragment.arguments = args
-        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.mainContainer, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
+
+    private fun replaceFragment(fragment: RecipesListFragment, bundle: Bundle) {
+        fragment.arguments = bundle
+        parentFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace<RecipesListFragment>(R.id.mainContainer, args = bundle)
+            addToBackStack(null)
+        }
     }
 
-    companion object{
+    companion object {
         const val ARG_CATEGORY_ID = "arg_category_id"
         const val ARG_CATEGORY_NAME = "arg_category_name"
         const val ARG_CATEGORY_URI = "arg_category_uri"
 
     }
+
 }

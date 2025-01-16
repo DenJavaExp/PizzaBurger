@@ -2,7 +2,6 @@ import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -14,7 +13,6 @@ import models.Category
 class CategoriesListAdapter(private val dataSet: List<Category>) :
     RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 
-    private var onCategoryClickListener: OnItemClickListener? = null
     private var itemClickListener: OnItemClickListener? = null
 
     interface OnItemClickListener {
