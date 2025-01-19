@@ -55,24 +55,16 @@ class CategoriesListFragment : Fragment() {
         val category = STUB.getCategories().find { it.id == categoryId }
         val categoryName = category?.title
         val categoryUrl = category?.imageUrl
-        requireActivity().supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            addToBackStack(null)
-            replace<RecipesListFragment>(R.id.mainContainer)
-
-
-            val bundle = bundleOf(
-                "ARG_CATEGORY_ID" to categoryId,
-                "ARG_CATEGORY_NAME" to categoryName,
-                "ARG_CATEGORY_IMAGE_URL" to categoryUrl
-            )
-
-            replaceFragment(RecipesListFragment(), bundle)
-        }
+        val bundle = bundleOf(
+            "ARG_CATEGORY_ID" to categoryId,
+            "ARG_CATEGORY_NAME" to categoryName,
+            "ARG_CATEGORY_IMAGE_URL" to categoryUrl
+        )
+        replaceFragment(RecipesListFragment(), bundle)
     }
 
 
-    private fun replaceFragment(fragment: RecipesListFragment, bundle: Bundle) {
+    private fun replaceFragment(fragment: Fragment, bundle: Bundle) {
         fragment.arguments = bundle
         parentFragmentManager.commit {
             setReorderingAllowed(true)
@@ -85,7 +77,5 @@ class CategoriesListFragment : Fragment() {
         const val ARG_CATEGORY_ID = "arg_category_id"
         const val ARG_CATEGORY_NAME = "arg_category_name"
         const val ARG_CATEGORY_URI = "arg_category_uri"
-
     }
-
 }
