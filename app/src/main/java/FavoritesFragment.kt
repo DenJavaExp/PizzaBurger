@@ -27,5 +27,4 @@ class FavoritesFragment: Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

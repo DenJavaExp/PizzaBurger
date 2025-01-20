@@ -1,13 +1,14 @@
 import android.os.Bundle
+import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.pizzaburger.R
 import com.example.pizzaburger.databinding.FragmentCategoriesListBinding
-import models.Category
 
 
 class CategoriesListFragment : Fragment() {
@@ -20,7 +21,7 @@ class CategoriesListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentCategoriesListBinding.inflate(inflater, container, false)
         return binding.root
@@ -41,19 +42,40 @@ class CategoriesListFragment : Fragment() {
         binding.rvCategories.adapter = categoryAdapter
 
         categoryAdapter.setOnItemClickListener(object : CategoriesListAdapter.OnItemClickListener {
-            override fun onItemClick(category: Category) {
+            override fun onItemClick(categoryId: Int) {
 
-                openRecipesByCategoryId()
+                openRecipesByCategoryId(categoryId)
 
             }
         })
     }
 
-    private fun openRecipesByCategoryId() {
-        requireActivity().supportFragmentManager.commit {
+
+    private fun openRecipesByCategoryId(categoryId: Int) {
+        val category = STUB.getCategories().find { it.id == categoryId }
+        val categoryName = category?.title
+        val categoryUrl = category?.imageUrl
+        val bundle = bundleOf(
+            "ARG_CATEGORY_ID" to categoryId,
+            "ARG_CATEGORY_NAME" to categoryName,
+            "ARG_CATEGORY_IMAGE_URL" to categoryUrl
+        )
+        replaceFragment(RecipesListFragment(), bundle)
+    }
+
+
+    private fun replaceFragment(fragment: Fragment, bundle: Bundle) {
+        fragment.arguments = bundle
+        parentFragmentManager.commit {
             setReorderingAllowed(true)
+            replace<RecipesListFragment>(R.id.mainContainer, args = bundle)
             addToBackStack(null)
-            replace<RecipesListFragment>(R.id.mainContainer)
         }
+    }
+
+    companion object {
+        const val ARG_CATEGORY_ID = "arg_category_id"
+        const val ARG_CATEGORY_NAME = "arg_category_name"
+        const val ARG_CATEGORY_URI = "arg_category_uri"
     }
 }

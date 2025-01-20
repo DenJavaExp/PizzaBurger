@@ -2,7 +2,6 @@ import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -17,7 +16,7 @@ class CategoriesListAdapter(private val dataSet: List<Category>) :
     private var itemClickListener: OnItemClickListener? = null
 
     interface OnItemClickListener {
-        fun onItemClick(category: Category)
+        fun onItemClick(categoryId: Int)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -58,7 +57,7 @@ class CategoriesListAdapter(private val dataSet: List<Category>) :
         )
 
         viewHolder.cardView.setOnClickListener {
-            itemClickListener?.onItemClick(category)
+            itemClickListener?.onItemClick(category.id)
         }
     }
 
