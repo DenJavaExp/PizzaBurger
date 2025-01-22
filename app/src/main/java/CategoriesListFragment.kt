@@ -1,5 +1,4 @@
 import android.os.Bundle
-import android.text.TextUtils.replace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,9 +55,9 @@ class CategoriesListFragment : Fragment() {
         val categoryName = category?.title
         val categoryUrl = category?.imageUrl
         val bundle = bundleOf(
-            "ARG_CATEGORY_ID" to categoryId,
-            "ARG_CATEGORY_NAME" to categoryName,
-            "ARG_CATEGORY_IMAGE_URL" to categoryUrl
+            ARG_CATEGORY_ID to categoryId,
+            ARG_CATEGORY_NAME to categoryName,
+            ARG_CATEGORY_IMAGE_URL to categoryUrl
         )
         replaceFragment(RecipesListFragment(), bundle)
     }
@@ -76,6 +75,6 @@ class CategoriesListFragment : Fragment() {
     companion object {
         const val ARG_CATEGORY_ID = "arg_category_id"
         const val ARG_CATEGORY_NAME = "arg_category_name"
-        const val ARG_CATEGORY_URI = "arg_category_uri"
+        const val ARG_CATEGORY_IMAGE_URL = "arg_category_uri"
     }
 }
