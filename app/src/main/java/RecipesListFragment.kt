@@ -67,7 +67,7 @@ class RecipesListFragment: Fragment() {
         fragment.arguments = bundle
         parentFragmentManager.commit {
             setReorderingAllowed(true)
-            replace<RecipeFragment>(R.id.mainContainer, args = bundle)
+            replace<RecipeFragment>(R.id.mainContainer)
             addToBackStack(null)
         }
     }
