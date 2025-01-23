@@ -19,7 +19,6 @@ class RecipesListAdapter(private val dataSet: List<Recipe>) :
         fun onItemClick(recipeId: Int)
     }
 
-
     fun setOnItemClickListener(listener: OnItemClickListener) {
         itemClickListener = listener
 
@@ -48,7 +47,7 @@ class RecipesListAdapter(private val dataSet: List<Recipe>) :
                 null
             )
         } catch (e: Exception) {
-            Log.d("!!!", "Image not found: ${recipe.imageUrl}")
+            Log.e("!!!", "Image not found: ${recipe.imageUrl}")
             null
         }
         viewHolder.imageView.setImageDrawable(drawable)

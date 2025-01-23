@@ -49,7 +49,6 @@ class CategoriesListFragment : Fragment() {
         })
     }
 
-
     private fun openRecipesByCategoryId(categoryId: Int) {
         val category = STUB.getCategories().find { it.id == categoryId }
         val categoryName = category?.title
@@ -61,7 +60,6 @@ class CategoriesListFragment : Fragment() {
         )
         replaceFragment(RecipesListFragment(), bundle)
     }
-
 
     private fun replaceFragment(fragment: Fragment, bundle: Bundle) {
         fragment.arguments = bundle

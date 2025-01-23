@@ -1,3 +1,4 @@
+import CategoriesListFragment.Companion.ARG_CATEGORY_ID
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.pizzaburger.R
 import com.example.pizzaburger.databinding.FragmentRecipesListBinding
+
 
 class RecipesListFragment: Fragment() {
 
@@ -37,8 +39,9 @@ class RecipesListFragment: Fragment() {
     }
 
     private fun initRecycler() {
-        val recipeAdapter = RecipesListAdapter(STUB.getRecipesByCategoryId(categoryId = id))
-        //binding.rvRecipes.layoutManager = LinearLayoutManager(context)
+        val categoryId = arguments?.getInt(ARG_CATEGORY_ID)
+            ?: throw IllegalArgumentException("Category ID is missing.")
+        val recipeAdapter = RecipesListAdapter(STUB.getRecipesByCategoryId(categoryId))
         binding.rvRecipes.adapter = recipeAdapter
 
         recipeAdapter.setOnItemClickListener(object : RecipesListAdapter.OnItemClickListener {
@@ -68,7 +71,6 @@ class RecipesListFragment: Fragment() {
             addToBackStack(null)
         }
     }
-
 
     companion object {
         const val ARG_RECIPE_ID = "arg_recipe_id"
