@@ -9,4 +9,5 @@
     <dimen name="text_size_tv_category_header">20sp</dimen>
     <dimen name="margin_top_tv_category">164dp</dimen>
     <dimen name="iv_category_height">130dp</dimen>
+    <dimen name="iv_burgers_height">100dp</dimen>
 </resources>

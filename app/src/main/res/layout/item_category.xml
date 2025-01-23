@@ -26,7 +26,7 @@
             tools:src="assets/burger.png" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_title_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/half_main_indentation_favorites_category_buttons"
