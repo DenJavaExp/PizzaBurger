@@ -8,6 +8,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.pizzaburger.R
 import com.example.pizzaburger.databinding.FragmentCategoriesListBinding
+import kotlinx.parcelize.Parcelize
 
 
 class CategoriesListFragment : Fragment() {

@@ -11,7 +11,7 @@ import com.example.pizzaburger.R
 import com.example.pizzaburger.databinding.FragmentRecipesListBinding
 
 
-class RecipesListFragment: Fragment() {
+class RecipesListFragment : Fragment() {
 
     private var _binding: FragmentRecipesListBinding? = null
     private val binding
@@ -51,13 +51,15 @@ class RecipesListFragment: Fragment() {
         })
     }
 
+
     private fun openRecipesByRecipeId(recipeId: Int) {
-        val recipe = STUB.getRecipesByCategoryId(recipeId).find { it.id == recipeId }
-        val recipeName = recipe?.title
+        val recipe = STUB.getRecipeById(recipeId)
+
         val recipeUrl = recipe?.imageUrl
         val bundle = bundleOf(
+            ARG_RECIPE to recipe,
             ARG_RECIPE_ID to recipeId,
-            ARG_RECIPE_NAME to recipeName,
+            ARG_RECIPE_NAME to recipe?.title,
             ARG_RECIPE_IMAGE_URL to recipeUrl
         )
         replaceFragment(RecipeFragment(), bundle)
@@ -67,15 +69,15 @@ class RecipesListFragment: Fragment() {
         fragment.arguments = bundle
         parentFragmentManager.commit {
             setReorderingAllowed(true)
-            replace<RecipeFragment>(R.id.mainContainer)
+            replace(R.id.mainContainer, fragment)
             addToBackStack(null)
         }
     }
 
     companion object {
+        const val ARG_RECIPE = "recipe"
         const val ARG_RECIPE_ID = "arg_recipe_id"
         const val ARG_RECIPE_NAME = "arg_recipe_name"
         const val ARG_RECIPE_IMAGE_URL = "arg_recipe_image_url"
     }
-
 }
