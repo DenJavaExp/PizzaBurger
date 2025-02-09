@@ -277,6 +277,10 @@ object STUB {
         }
     }
 
+
+    fun getRecipeById(id: Int) : Recipe? {
+     return burgerRecipes.find { it.id == id }
+        }
 }
 
 

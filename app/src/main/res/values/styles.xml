@@ -19,4 +19,9 @@
         <item name="android:textColor">@color/color_tv_header</item>
     </style>
 
+    <style name="MarginStyleItem">
+        <item name="android:layout_marginHorizontal">@dimen/margin_medium</item>
+        <item name="android:layout_marginVertical">@dimen/margin_medium</item>
+    </style>
+
 </resources>

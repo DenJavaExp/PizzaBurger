@@ -8,7 +8,9 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pizzaburger.R
 import com.example.pizzaburger.databinding.ItemCategoryBinding
+import kotlinx.parcelize.Parcelize
 import models.Category
+
 
 class CategoriesListAdapter(private val dataSet: List<Category>) :
     RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {

@@ -28,7 +28,7 @@
             android:id="@+id/categoriesHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/main_indentation_favorites_category_buttons"
+            android:layout_marginStart="@dimen/margin_large"
             android:layout_marginTop="@dimen/margin_top_tv_category"
             android:background="@drawable/shape_tv_header"
             android:fontFamily="@font/montserrat_alternates_semi_bold"
